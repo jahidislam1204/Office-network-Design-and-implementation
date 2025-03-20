@@ -1,0 +1,116 @@
+In part-1 of this project I just do some basic work on ruters and switches.
+-> Hostnames
+-> Line console and VTY Passwords
+-> Banner Messages
+-> Disabled IP lookup
+
+
+The command for these work I used, is given below...
+
+-->> activate interface in routers
+
+enable
+config t
+int se0/2/0
+no sh
+int se0/2/1
+no sh
+int range g0/0-2
+no sh
+
+
+-->> Basic config in layer 2 switch like(management, research,hr,admin,customer,guest and so on)
+
+enable
+config t
+
+hostname floor1-management-sw           // will be different for every layer-2 switches
+banner motd #This is management department#  // will be different for every layer-2 switches
+line console 0
+password jahid
+
+login
+exit
+
+line vty 0 15
+password jahid
+login
+exit
+
+no ip domain-lookup 
+
+enable password jahid
+service password-encryption
+do wr
+
+
+-->> Basic config in layer 1 switches like(Floor-1, Floor-2, Floor-3, Floor-4)
+
+enable
+config t
+
+hostname Floor-1-sw         // will be different for every layer-3 switches
+banner motd #This is floor 1 layer-3 switch#    // will be different for every layer-3 switches
+
+line consol 0
+password jahid
+login
+ exit
+
+ip domain-name Cisco.net
+username ciso password jahid
+crypto key generate rsa
+1024
+
+line vty 0 15
+ 
+login local
+transport input ssh
+exit
+
+
+no ip domain-lookup
+enable password jahid
+service password-encryption
+
+
+
+do wr
+
+
+
+-->> Basic config in core routers like(Floor-1, Floor-2, Floor-3, Floor-4)
+
+
+enable
+config t
+
+hostname Floor-1-router       // will be different for every core routers
+banner motd #This is floor 1 core router#         // will be different for every core routers
+
+line consol 0
+password jahid
+login
+ exit
+
+ip domain-name Cisco.net
+username ciso password jahid
+crypto key generate rsa
+1024
+
+line vty 0 15
+login local
+transport input ssh
+exit
+
+
+no ip domain-lookup
+enable password jahid
+service password-encryption
+
+
+
+do wr
+
+
+
