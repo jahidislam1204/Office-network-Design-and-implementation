@@ -1,0 +1,393 @@
+Part 2: (VLAN's assign + security) 
+
+-> Assign VLAN
+-> mode access
+-> Trunk ports
+-> Switchport security to all 12 switches.
+
+-------->>>>> For management Switch (Layer-2)
+
+
+enable
+config t
+
+int range f0/1-2
+switchport mode trunk
+
+exit
+
+vlan 10
+name management
+exit
+
+int range f0/3-24
+switchport mode access
+switchport access vlan 10
+switchport port-security
+switchport port-security maximum 2
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+
+
+do wr
+exit
+do sh start
+
+do sh port-security
+
+
+-------->>>>> For Research Switch (Layer-2)
+
+
+enable
+config t
+
+int range f0/1-2
+switchport mode trunk
+
+exit
+
+vlan 20
+name Research
+exit
+
+int range f0/3-24
+switchport mode access
+switchport access vlan 20
+switchport port-security
+switchport port-security maximum 2
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+
+
+do wr
+exit
+do sh start
+
+
+
+-------->>>>> For HR Switch (Layer-2)
+
+
+enable
+config t
+
+int range f0/1-2
+switchport mode trunk
+
+exit
+
+vlan 30
+name HR
+exit
+
+int range f0/3-24
+switchport mode access
+switchport access vlan 30
+switchport port-security
+switchport port-security maximum 2
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+
+
+do wr
+exit
+do sh start
+
+
+
+-------->>>>> For Marketing Switch (Layer-2)
+
+
+enable
+config t
+
+int range f0/1-2
+switchport mode trunk
+
+exit
+
+vlan 40
+name Marketing
+exit
+
+int range f0/3-24
+switchport mode access
+switchport access vlan 40
+switchport port-security
+switchport port-security maximum 2
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+
+
+do wr
+exit
+do sh start
+
+
+
+-------->>>>> For Accounting Switch (Layer-2)
+
+
+enable
+config t
+
+int range f0/1-2
+switchport mode trunk
+
+exit
+
+vlan 50
+name Accounting
+exit
+
+int range f0/3-24
+switchport mode access
+switchport access vlan 50
+switchport port-security
+switchport port-security maximum 2
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+
+
+do wr
+exit
+do sh start
+
+
+
+
+-------->>>>> For Finance Switch (Layer-2)
+
+
+enable
+config t
+
+int range f0/1-2
+switchport mode trunk
+
+exit
+
+vlan 60
+name Finance
+exit
+
+int range f0/3-24
+switchport mode access
+switchport access vlan 60
+switchport port-security
+switchport port-security maximum 2
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+
+
+do wr
+exit
+do sh start
+
+
+
+-------->>>>> For Logistic Switch (Layer-2)
+
+
+enable
+config t
+
+int range f0/1-2
+switchport mode trunk
+
+exit
+
+vlan 70
+name Logistic
+exit
+
+int range f0/3-24
+switchport mode access
+switchport access vlan 70
+switchport port-security
+switchport port-security maximum 2
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+
+
+do wr
+exit
+do sh start
+
+
+
+
+-------->>>>> For Customer Switch (Layer-2)
+
+
+enable
+config t
+
+int range f0/1-2
+switchport mode trunk
+
+exit
+
+vlan 80
+name Customer
+exit
+
+int range f0/3-24
+switchport mode access
+switchport access vlan 80
+switchport port-security
+switchport port-security maximum 2
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+
+
+do wr
+exit
+do sh start
+
+
+
+
+-------->>>>> For Guest Switch (Layer-2)
+
+
+enable
+config t
+
+int range f0/1-2
+switchport mode trunk
+
+exit
+
+vlan 90
+name Guest
+exit
+
+int range f0/3-24
+switchport mode access
+switchport access vlan 90
+switchport port-security
+switchport port-security maximum 2
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+
+
+do wr
+exit
+do sh start
+
+
+
+-------->>>>> For Admin Switch (Layer-2)
+
+
+enable
+config t
+
+int range f0/1-2
+switchport mode trunk
+
+exit
+
+vlan 100
+name Admin
+exit
+
+int range f0/3-24
+switchport mode access
+switchport access vlan 100
+switchport port-security
+switchport port-security maximum 2
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+
+
+do wr
+exit
+do sh start
+
+
+
+
+-------->>>>> For ICT Switch (Layer-2)
+
+
+enable
+config t
+
+int range f0/1-2
+switchport mode trunk
+
+exit
+
+vlan 110
+name ICT
+exit
+
+int range f0/3-24
+switchport mode access
+switchport access vlan 110
+switchport port-security
+switchport port-security maximum 2
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+
+
+do wr
+exit
+do sh start
+
+
+
+
+-------->>>>> For Server Switch (Layer-2)
+
+
+enable
+config t
+
+int range f0/1-2
+switchport mode trunk
+
+exit
+
+vlan 120
+name Server
+exit
+
+int range f0/3-24
+switchport mode access
+switchport access vlan 120
+switchport port-security
+switchport port-security maximum 2
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+
+
+do wr
+exit
+do sh start
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------Layer-3 switch config----------------------------------------------------------------------------------------------
+
+// for all layer-3 switches.
+
+int range gig1/0/3-8 
+switchport mode trunk
+exit
+do wr
+
+
+
+
+
